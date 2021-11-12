@@ -1,0 +1,4 @@
+resource "aws_key_pair" "suuu" {
+  key_name   = "suuu-key"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDfYmFfDncJ0bZTmiJjtz/p9rZoMsJrD0lpnoNAmTPkqqUA26UHx9T2fUvkxoM9yg6BSQ23HmKorYTaCoNnefq4sTtza1rM96v7MgjB5/cpyhMETeXL7lBBN+5FhhOKQKoQG6XZ5vZl0PgBj9aQ3t7oDrMSlVF6mlsDNyC/XBDEOBtVZ+ECCWiwCC7mCdJD/NEmf+I7ogaMA9LaPuDswPt80S0Qj2R1ZOk4vDAGya5PX/+u5Hla29wbIgvllYA/oeOFVlYN3v6gm3NKgXa98jQeW0/buuB2lt4NK4YyEEQyx/0IotsblxYB0W2gou6cZV2wT1I/Vm7xwFxYjFGsHRmZo3cfP5i+FfDkTluBefRVpSUfWM5C6GeUC40FAb3UQoajgvwf3ViI95cylI0I2+Q2rnChMPZjd7CuMM0JtS+RRqBSmgGY4Kv+sZ8XfOuLXaSYJepekg0om3VAyCAi5CdvvXBfNzpHpFyajU2shBozNOUB91f84B7B22Lw5Gdg9A0="
+}
