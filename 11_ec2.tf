@@ -17,28 +17,22 @@ data "aws_ami"  "amzn" {
 */
 
 resource "aws_instance" "suuu_weba" {
-  ami = "ami-04e8dfc09b22389ad"
-  instance_type = "t2.micro"
-  key_name = "suuu-key" #00_key 첫 줄이 아니고 key_name이 와야함!!!
-  availability_zone = "ap-northeast-2a"
-  private_ip = "10.0.0.11"
-  subnet_id = aws_subnet.SUUUU_puba.id
+  ami                    = "ami-04e8dfc09b22389ad"
+  instance_type          = "t2.micro"
+  key_name               = "suuu-key" #00_key 첫 줄이 아니고 key_name이 와야함!!!
+  availability_zone      = "ap-northeast-2a"
+  private_ip             = "10.0.0.11"
+  subnet_id              = aws_subnet.SUUUU_puba.id
   vpc_security_group_ids = [aws_security_group.suuu_sg.id]
-  user_data = <<-EOF
-                #!/bin/bash
-                yum install -y httpd
-                echo "suuu-Terraform-1" >> /var/www/html/index.html
-                systemctl start httpd
-                systemctl enable httpd
-                EOF
+  user_data              = file("./install.sh")
   tags = {
-    "Name"  =  "suuu_weba"
+    "Name" = "suuu_weba"
   }
 }
 
 resource "aws_eip" "suuu_weba_ip" {
-  vpc = true
-  instance = aws_instance.suuu_weba.id
+  vpc                       = true
+  instance                  = aws_instance.suuu_weba.id
   associate_with_private_ip = "10.0.0.11"
   depends_on = [
     aws_internet_gateway.suuu_ig
@@ -46,5 +40,5 @@ resource "aws_eip" "suuu_weba_ip" {
 }
 
 output "public_ip" {
-    value = aws_instance.suuu_weba.public_ip
+  value = aws_instance.suuu_weba.public_ip
 }
